@@ -1,4 +1,3 @@
-# Em routers/convites.py
 from fastapi import APIRouter, HTTPException, status, Depends
 from typing import List
 from uuid import uuid4

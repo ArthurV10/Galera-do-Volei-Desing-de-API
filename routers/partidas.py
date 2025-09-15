@@ -1,4 +1,3 @@
-# Em routers/partidas.py
 from fastapi import APIRouter, HTTPException, status, Depends
 from typing import List, Optional
 from uuid import UUID, uuid4

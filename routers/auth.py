@@ -1,4 +1,3 @@
-# Em routers/auth.py
 from fastapi import APIRouter, HTTPException, status, Depends
 from datetime import timedelta
 import schemas

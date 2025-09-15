@@ -33,7 +33,7 @@ class Jogador(JogadorBase):
     posicoes_preferidas: List[str] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 # Schema simplificado para ser usado dentro de outras respostas (ex: em Avaliação)
 class JogadorPublico(BaseModel):
@@ -41,7 +41,7 @@ class JogadorPublico(BaseModel):
     nome: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 # ==================
 #      PARTIDA
@@ -78,7 +78,8 @@ class Partida(PartidaBase):
     jogadores_confirmados_count: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
 
 # ==================
 #    INSCRIÇÃO
@@ -91,7 +92,8 @@ class Inscricao(BaseModel):
     status: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
 
 class InscricaoUpdate(BaseModel):
     status: str # Ex: "Confirmada" ou "Rejeitada"
@@ -120,7 +122,8 @@ class Avaliacao(AvaliacaoBase):
     avaliador: JogadorPublico
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
 
 # ==================
 #       LOCAL
@@ -140,7 +143,8 @@ class Local(LocalBase):
     id: UUID
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
 
 # ==================
 #      CONVITE
@@ -156,7 +160,7 @@ class Convite(ConviteCreate):
     data_envio: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 # ==================
 #    AUTENTICAÇÃO
@@ -175,6 +179,14 @@ class ForgotPasswordRequest(BaseModel):
 
 class ResetPasswordRequest(BaseModel):
     token: str
+    nova_senha: str = Field(..., min_length=8)
+
+# ==================
+#    ALTERAR SENHA
+# ==================
+
+class ChangePasswordRequest(BaseModel):
+    senha_atual: str
     nova_senha: str = Field(..., min_length=8)
 
 # ==================

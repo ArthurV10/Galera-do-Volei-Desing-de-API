@@ -1,4 +1,3 @@
-# Em routers/jogadores.py
 from fastapi import APIRouter, HTTPException, status, Depends
 from typing import List
 from uuid import UUID, uuid4
